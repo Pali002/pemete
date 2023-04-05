@@ -1,0 +1,68 @@
+
+<div class="container">
+    <h2>Dolgozók</h2>
+    
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#operatorModal">
+        Hozzáad
+      </button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Az</th>
+                <th>Név</th>
+                <th>Település</th>
+                <th>Fizetés</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let emp of employees">
+            <tr>
+                <td>{{emp.id}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.city}}</td>
+                <td>{{emp.salary}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="operatorModal" tabindex="-1" aria-labelledby="operatorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="operatorModalLabel">Dolgozó hozzáadása</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]="employeeForm">
+            <div class="mt-3">
+                <label for="id" class="form-label">Azonosító</label>
+                <input type="text" id="id" class="form-control" formControlName="id">
+            </div>
+          <div class="mt-3">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" id="name" class="form-control" formControlName="name">
+            </div>
+            <div class="mt-3">
+                <label for="city" class="form-label">Település</label>
+                <input type="text" id="city" class="form-control" formControlName="city">
+            </div>
+            <div class="mt-3">
+                <label for="salary" class="form-label">Fizetés</label>
+                <input type="text" id="salary" class="form-control" formControlName="salary">
+            </div>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+          <button type="button" class="btn btn-primary">Mentés</button>
+        </div>
+      </div>
+    </div>
+  </div>

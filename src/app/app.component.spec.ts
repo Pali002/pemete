@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -10,22 +11,34 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('létrehozható az app componens', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'pemete'`, () => {
+  it(`Title értéke 'pemete'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('pemete');
   });
 
-  it('should render title', () => {
+  it('A title megjelenik', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('pemete app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('pemete');
+  });
+
+  it('Nav elem létezik', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const nav = fixture.debugElement.queryAll(By.css('nav'));
+    expect(nav.length).toEqual(1);
+  });
+
+  it('Nav elemben két a elem van', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const nav_a = fixture.debugElement.queryAll(By.css('nav a'));
+    expect(nav_a.length).toEqual(2);
   });
 });
