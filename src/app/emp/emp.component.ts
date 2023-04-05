@@ -36,4 +36,19 @@ export class EmpComponent implements OnInit {
     });
   }
 
+  onClickSaveButton(){
+
+    let employee ={
+      name: this.employeeForm.value.name,
+      city: this.employeeForm.value.city,
+      salary: this.employeeForm.value.salary
+    }
+    this.api.addEmployee(employee).subscribe({
+      next: (response: any) => {
+        console.log(response);
+      },
+      error: () => {}
+    });
+  }
+
 }
